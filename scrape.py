@@ -18,17 +18,36 @@ text_area.clear()
 
 # Input the decklist
 decklist = """
-Pokémon (17.6)
-3.38 Ralts ASR 60
-3.00 Kirlia SIT 68
+Pokémon (12)
+4 Comfey LOR 79
+1 Sableye LOR 70
+1 Cramorant LOR 50
+1 Radiant Greninja ASR 46
+1 Kyogre CEL 3
+1 Roaring Moon ex PAR 124
+1 Iron Hands ex PAR 70
+1 Origin Forme Palkia V ASR 39
+1 Origin Forme Palkia VSTAR ASR 40
 
-Trainer (30.41)
-3.90 Level Ball BST 129
-3.62 Iono PAL 185
+Trainer (36)
+4 Colress's Experiment LOR 155
+4 Mirage Gate LOR 163
+4 Battle VIP Pass FST 225
+4 Nest Ball SVI 181
+4 Switch Cart ASR 154
+4 Escape Rope BST 125
+3 Pokégear 3.0 SVI 186
+3 Super Rod PAL 188
+2 Energy Recycler BST 124
+1 Hisuian Heavy Ball ASR 146
+1 Pal Pad SVI 182
+2 PokéStop PGO 68
 
 Energy (12)
-9.97 Psychic Energy 5
-2.03 Reversal Energy PAL 192
+4 Water Energy 3
+4 Darkness Energy 7
+2 Psychic Energy 5
+2 Lightning Energy 4
 """
 
 text_area.send_keys(decklist)
@@ -46,8 +65,11 @@ images = driver.find_elements(By.TAG_NAME, 'img')
 # Extract URLs
 image_urls = [img.get_attribute('src') for img in images]
 
-# Print URLs
-for url in image_urls:
+# Create a subset of image_urls (cards_urls) with "XS.png" in their name
+cards_urls = [url for url in image_urls if 'XS.png' in url]
+
+# Print URLs from cards_urls instead of image_urls
+for url in cards_urls:
     print(url)
 
 # Close the browser
