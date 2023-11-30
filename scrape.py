@@ -4,6 +4,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
+import tkinter as tk
+from tkinter import simpledialog
 
 # Setup webdriver
 webdriver_service = Service(ChromeDriverManager().install())
@@ -12,44 +14,17 @@ driver = webdriver.Chrome(service=webdriver_service)
 # Get webpage
 driver.get('https://limitlesstcg.com/tools/imggen')
 
+# Prompt user to input the decklist
+root = tk.Tk()
+root.withdraw()  # Hide the main window
+
+decklist = simpledialog.askstring("Input", "Paste your decklist here:")
+
 # Locate and interact with the text area using the name attribute
 text_area = driver.find_element(By.NAME, 'input')
 text_area.clear()
 
 # Input the decklist
-decklist = """
-Pokémon (12)
-4 Comfey LOR 79
-1 Sableye LOR 70
-1 Cramorant LOR 50
-1 Radiant Greninja ASR 46
-1 Kyogre CEL 3
-1 Roaring Moon ex PAR 124
-1 Iron Hands ex PAR 70
-1 Origin Forme Palkia V ASR 39
-1 Origin Forme Palkia VSTAR ASR 40
-
-Trainer (36)
-4 Colress's Experiment LOR 155
-4 Mirage Gate LOR 163
-4 Battle VIP Pass FST 225
-4 Nest Ball SVI 181
-4 Switch Cart ASR 154
-4 Escape Rope BST 125
-3 Pokégear 3.0 SVI 186
-3 Super Rod PAL 188
-2 Energy Recycler BST 124
-1 Hisuian Heavy Ball ASR 146
-1 Pal Pad SVI 182
-2 PokéStop PGO 68
-
-Energy (12)
-4 Water Energy 3
-4 Darkness Energy 7
-2 Psychic Energy 5
-2 Lightning Energy 4
-"""
-
 text_area.send_keys(decklist)
 
 # Locate and click the "Submit" button
