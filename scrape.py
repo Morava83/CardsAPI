@@ -47,6 +47,9 @@ image_urls = [img.get_attribute('src') for img in images]
 # Create a subset of image_urls (cards_urls) with "XS.png" in their name
 cards_urls = [url for url in image_urls if 'XS.png' in url]
 
+#Make the card images larger
+cards_urls = [url.replace('XS.png', 'LG.png') for url in cards_urls]
+
 # Close the browser
 driver.quit()
 
