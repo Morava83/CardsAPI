@@ -15,5 +15,5 @@ decklist = "hi"  # Your single-line string
 payload = {"decklist": decklist}
 headers = {"Content-Type": "application/json"}
 
-response = requests.post(url, json=payload, headers=headers)
+response = requests.post(url, json=decklist, headers=headers)
 print(response.json())
