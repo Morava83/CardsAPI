@@ -41,9 +41,6 @@ async def getDeckList(decklist: Optional[str] = Body(None)):
     submit_button = driver.find_element(By.XPATH, "//button[@type='submit' and text()='Submit']")
     submit_button.click()
 
-    # Wait for a moment to ensure the submission is processed
-    time.sleep(2)
-
     # Get all images
     images = driver.find_elements(By.TAG_NAME, 'img')
 
