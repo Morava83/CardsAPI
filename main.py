@@ -21,7 +21,7 @@ async def deckListBase():
 @app.post('/Deck')
 async def getDeckList(decklist: Optional[str] = Body(None)):
     # Process the decklist here (e.g., store it in a database, analyze it, etc.)
-    return {"image urls": decklist}
+    #return {"image urls": decklist}
 
     # Setup webdriver
     webdriver_service = Service(ChromeDriverManager().install())
@@ -59,4 +59,4 @@ async def getDeckList(decklist: Optional[str] = Body(None)):
     # Close the browser
     driver.quit()
 
-    #return {"image urls": cards_urls}
+    return {"image urls": cards_urls}
