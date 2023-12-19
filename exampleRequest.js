@@ -1,4 +1,4 @@
-const url = "https://cardsapi.onrender.com/Deck";
+const url = "http://localhost:80/deck";
 
 const decklist = `
 3 Roaring Moon ex PAR 124
@@ -31,7 +31,7 @@ const decklist = `
 3 Water Energy 3
 `;
 
-fetch("https://cardsapi.onrender.com/")
+fetch("http://localhost:80/")
     .then(response => {
         if (!response.ok) {
             return response.text().then(text => { throw new Error(text) });
@@ -41,7 +41,7 @@ fetch("https://cardsapi.onrender.com/")
     .then(data => console.log(data))
     .catch(error => console.log('Error:', error));
 
-fetch("https://cardsapi.onrender.com/Deck")
+fetch("http://localhost:80/deck")
     .then(response => {
         if (!response.ok) {
             return response.text().then(text => { throw new Error(text) });

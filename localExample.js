@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:10000/Deck";
+const url = "http://127.0.0.1:10000/deck";
 
 const decklist = `
 3 Roaring Moon ex PAR 124
@@ -35,7 +35,7 @@ fetch("http://127.0.0.1:10000/")
     .then(response => response.json())
     .then(data => console.log(data));
 
-fetch("http://127.0.0.1:10000/Deck")
+fetch("http://127.0.0.1:10000/deck")
     .then(response => response.json())
     .then(data => console.log(data));
 
