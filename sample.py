@@ -1,14 +1,14 @@
 import requests
 
-home = requests.get("http://127.0.0.1:8000/")
+home = requests.get("http://127.0.0.1:10000/")
 
 print(home.json())
 
-base = requests.get("http://127.0.0.1:8000/Deck")
+base = requests.get("http://127.0.0.1:10000/Deck")
 
 print(base.json())
 
-url = "http://127.0.0.1:8000/Deck"
+url = "http://127.0.0.1:10000/Deck"
 
 decklist = """
 3 Roaring Moon ex PAR 124
