@@ -3,11 +3,6 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import time
-import tkinter as tk
-
-# Function to handle window close event
-def on_close():
-    root.destroy()
 
 # Setup webdriver
 webdriver_service = Service(ChromeDriverManager().install())
@@ -15,10 +10,6 @@ driver = webdriver.Chrome(service=webdriver_service)
 
 # Get webpage
 driver.get('https://limitlesstcg.com/tools/imggen')
-
-# Prompt user to input the decklist
-root = tk.Tk()
-root.withdraw()  # Hide the main window
 
 decklist = """
 Pokémon (16)
@@ -81,27 +72,6 @@ cards_urls = [url.replace('XS.png', 'LG.png') for url in cards_urls]
 # Close the browser
 driver.quit()
 
-# Create a custom Toplevel window with a wider Text widget for editable text
-output_window = tk.Toplevel(root)
-output_window.title("Card URLs")
-
-text_widget = tk.Text(output_window, wrap="none", height=10, width=85)  # Adjust width here
-text_widget.insert("1.0", "\n".join(cards_urls))
-text_widget.pack()
-
-# Make the text widget read-only
-text_widget.configure(state="disabled")
-
-# Allow selecting and copying text
-text_widget.bind("<Button-1>", lambda event: text_widget.tag_add(tk.SEL, "1.0", tk.END))
-text_widget.bind("<Control-c>", lambda event: root.clipboard_clear() or root.clipboard_append(text_widget.selection_get()))
-
-# Bind window close event to on_close function
-output_window.protocol("WM_DELETE_WINDOW", on_close)
-
 # Print URLs from cards_urls instead of image_urls
 for url in cards_urls:
     print(url)
-
-# Run the Tkinter main loop
-root.mainloop()
