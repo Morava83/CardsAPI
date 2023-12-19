@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-#from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from fastapi import Body, FastAPI
 from typing import Optional
@@ -28,7 +27,6 @@ async def getDeckList(decklist: Optional[str] = Body(None)):
     # Setup webdriver
     webdriver_service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=webdriver_service, options=chrome_options)
-    #driver = webdriver.Chrome(service=webdriver_service)
     
     # Get webpage
     driver.get('https://limitlesstcg.com/tools/imggen')
