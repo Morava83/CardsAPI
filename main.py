@@ -12,12 +12,12 @@ app = FastAPI()
 async def root():
     return {"PokemonCardsAPI": "Welcome!"}
 
-@app.get('/Deck')
+@app.get('/deck')
 async def deckListBase():
     return {"Enter decklist as a query string"}
 
 
-@app.post('/Deck')
+@app.post('/deck')
 async def getDeckList(decklist: Optional[str] = Body(None)):
 
     #Load less of Browser GUI
